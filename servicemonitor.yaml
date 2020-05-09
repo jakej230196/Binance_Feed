@@ -1,0 +1,17 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: binance-feed
+  namespace: development
+  labels:
+    app: binance-feed
+    release: prometheus-operator
+spec:
+  endpoints:
+  - port: metrics
+  namespaceSelector:
+    matchNames:
+    - development
+  selector:
+    matchLabels:
+      app: binance-feed

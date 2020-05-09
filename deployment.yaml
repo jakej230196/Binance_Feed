@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: binance-feed
+  labels:
+    app: binance-feed
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: binance-feed
+  template:
+    metadata:
+      labels:
+        app: binance-feed
+    spec:
+        containers:
+        - name: binance-feed-container
+          image: 
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 8080
+            name: metrics
+          env:
+          - name: KAFKA_BROKERLIST
+            value: "kafka"
+          - name: KAFKA_OUTPUT_TOPIC
+            value: "binance.raw"
+          - name: METRICS_PORT
+            value: "8080"
+          - name: LOG_LEVEL
+            value: "info"
+          - name: METRICS_NAMESPACE
+            value: "feeds"

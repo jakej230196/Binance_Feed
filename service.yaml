@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: binance-feed-kafka-metrics
+  namespace: development
+  labels:
+    app: binance-feed
+spec:
+  selector:
+    app: binance-feed
+  ports:
+  - name: metrics
+    port: 8080
+
