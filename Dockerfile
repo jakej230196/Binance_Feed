@@ -8,7 +8,7 @@ RUN adduser -D -g '' appuser
 COPY . .
 RUN go get -d -v
 
-RUN GOOS=linux GOARCH=amd64 go build -tags musl -a -installsuffix cgo -ldflags '-extldflags "-static" -w -s' -o /go/bin/binance_feed
+RUN GOOS=linux GOARCH=arm GOARM=7 go build -tags musl -a -installsuffix cgo -ldflags '-extldflags "-static" -w -s' -o /go/bin/binance_feed
 
 # Make image smaller...
 FROM scratch

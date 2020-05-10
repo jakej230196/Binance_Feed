@@ -16,7 +16,7 @@ spec:
     spec:
         containers:
         - name: binance-feed-container
-          image: 
+          image: jakej230196/binance-feed
           imagePullPolicy: Always
           ports:
           - containerPort: 8080
